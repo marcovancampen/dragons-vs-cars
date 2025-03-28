@@ -6,7 +6,7 @@ import com.github.hanyaeger.tutorial.scenes.GameLevel;
 import com.github.hanyaeger.tutorial.scenes.GameOverScene;
 import com.github.hanyaeger.tutorial.scenes.TitleScene;
 
-public class dragonVSCars extends YaegerGame {
+public class dragonsVSCars extends YaegerGame {
     public static void main(String[] args) {
         launch(args);
     }

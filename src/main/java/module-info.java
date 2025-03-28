@@ -1,7 +1,7 @@
-module waterworld {
+module dragons.Cars {
     requires hanyaeger;
 
-    exports com.github.hanyaeger.tutorial;
+    exports dragonsVSCars;
 
     opens audio;
     opens backgrounds;
