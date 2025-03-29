@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.YaegerGame;
 import com.github.hanyaeger.tutorial.scenes.GameLevel;
 import com.github.hanyaeger.tutorial.scenes.GameOverScene;
 import com.github.hanyaeger.tutorial.scenes.TitleScene;
+import dragonsVSCars.Scenes.titleScreen;
 
 public class dragonsVSCars extends YaegerGame {
     public static void main(String[] args) {
@@ -19,5 +20,6 @@ public class dragonsVSCars extends YaegerGame {
 
     @Override
     public void setupScenes(){
+        addScene(0, new titleScreen(this));
     }
 }
