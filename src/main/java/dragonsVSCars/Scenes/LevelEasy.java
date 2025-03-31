@@ -29,6 +29,7 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
         playerStats = new PlayerStats(new Coordinate2D(50, 50), "hallo", 100, 500, 1);
         addEntity(playerStats);
     }
+
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
         if (!checkDragons(coordinate2D)) {
@@ -40,6 +41,7 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
 
         }
     }
+
     boolean checkDragons(Coordinate2D coordinate2D) {
         if (dragons == null || dragons.isEmpty()) {
             return false; // No dragons placed yet, so it's safe to place a new one
@@ -52,9 +54,14 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
         }
         return false; // No dragon is too close
     }
+
     @Override
     public void setupEntitySpawners() {
         addEntitySpawner(new CarSpawner(getWidth(), getHeight()));
+    }
+
+    public PlayerStats getPlayerStats() {
+        return playerStats;
     }
 }
 

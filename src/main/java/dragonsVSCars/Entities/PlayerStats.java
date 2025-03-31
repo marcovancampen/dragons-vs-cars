@@ -1,7 +1,6 @@
 package dragonsVSCars.Entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -29,6 +28,9 @@ public class PlayerStats extends TextEntity {
 
     public void decreaseHealth(int value){
         this.health -= value;
+        if(this.health < 0){
+            this.health = 0;
+        }
         setText();
     }
 
