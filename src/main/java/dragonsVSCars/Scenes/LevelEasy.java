@@ -12,7 +12,8 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
 public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, MouseButtonPressedListener {
-    @Override ArrayList<Dragons> dragons = new ArrayList<>();
+    ArrayList<Dragons> dragons = new ArrayList<>();
+    @Override
 
     public void setupScene() {
         setBackgroundColor(Color.BLACK);
@@ -26,7 +27,7 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
         if (!checkDragons(coordinate2D)) {
-            var Dragon = new Dragons(coordinate2D, 10, 10, 10);
+            var Dragon = new Dragons(coordinate2D, 10, 10, 10, 10 );
             Dragon.setAnchorPoint(AnchorPoint.CENTER_CENTER);
             dragons.add(Dragon);
             addEntity(Dragon);
