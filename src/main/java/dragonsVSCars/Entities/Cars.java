@@ -1,9 +1,12 @@
 package dragonsVSCars.Entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
+
+import java.util.Set;
 
 public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatcher {
     protected int marge;
@@ -23,9 +26,19 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
 
     }
 
-    public void moveCar(){
+    public void moveCar(int richting, int speed){
+            switch (richting) {
+                case 0:
+                    setMotion(speed, Direction.LEFT);
+                case 1:
+                    setMotion(speed, Direction.RIGHT);
+                case 2:
+                    setMotion(speed, Direction.UP);
+                case 3:
+                    setMotion(speed, Direction.DOWN);
+            }
+        }
 
-    }
 
     private void rotateSprite(){
 
@@ -49,4 +62,6 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
 
 
     }
-}
+    }
+
+

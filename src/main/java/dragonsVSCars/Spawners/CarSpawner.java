@@ -20,7 +20,7 @@ public class CarSpawner extends EntitySpawner {
     @Override
     protected void spawnEntities() {
         if (new Random().nextInt(10) < 4) {
-            spawn(new Cars(20, 20, new int[]{0, 1, 2}, new Coordinate2D(20, 20)));
+            spawn(new Cars(20, 20, new int[]{0, 1, 2}, new Coordinate2D(50, 700)));
         }
     }
 

@@ -5,7 +5,6 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
-import dragonsVSCars.Entities.Dragons;
 import dragonsVSCars.Spawners.CarSpawner;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;

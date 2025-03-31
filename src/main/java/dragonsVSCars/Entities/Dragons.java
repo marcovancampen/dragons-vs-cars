@@ -22,7 +22,7 @@ public class Dragons extends DynamicSpriteEntity implements SceneBorderTouchingW
         this.attackSpeed = attackSpeed;
         this.attackRange = attackRange;
         this.upgradeCost = upgradeCost;
-        this.attackDamage = attackDamag;
+        this.attackDamage = attackDamage;
     }
 
     public void spawnDragon() {
