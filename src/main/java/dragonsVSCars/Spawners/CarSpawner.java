@@ -12,7 +12,7 @@ public class CarSpawner extends EntitySpawner {
     private final double sceneHeight;
 
     public CarSpawner(double sceneWidth, double sceneHeight) {
-        super(100);
+        super(1000);
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
     }

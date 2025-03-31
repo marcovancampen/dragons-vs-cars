@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
+import dragonsVSCars.Scenes.LevelEasy;
 
 import java.util.Set;
 
@@ -20,6 +21,8 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         this.health = health;
         this.speed = speed;
         this.path = path;
+
+        setMotion(3, Direction.UP);
     }
 
     public void spawnCar(){
@@ -60,6 +63,11 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
     @Override
     public void notifyBoundaryTouching(SceneBorder border) {
 
+        switch (border){
+            case TOP:
+                LevelEasy.playerStats.decreaseHealth(this.health);
+                remove();
+        }
 
     }
     }

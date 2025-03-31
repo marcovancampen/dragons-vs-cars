@@ -2,22 +2,34 @@ package dragonsVSCars.Entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
+import com.github.hanyaeger.api.entities.impl.TextEntity;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
-public class PlayerStats extends DynamicTextEntity {
+public class PlayerStats extends TextEntity {
 
     public int health;
     public int cash;
     public int round;
 
-    protected PlayerStats(Coordinate2D initialLocation, int health, int cash, int round) {
-        super(initialLocation);
+    public PlayerStats(Coordinate2D initialLocation, String text, int health, int cash, int round) {
+        super(initialLocation, text);
         this.health = health;
         this.cash = cash;
         this.round = round;
+        setText();
+    }
+
+    public void setText(){
+        setText("Health: " + this.health + " Cash: " + this.cash + " Round: " + this.round);
+        setFont(Font.font("Roboto", FontWeight.BOLD, 30));
+        setFill(Color.WHITE);
     }
 
     public void decreaseHealth(int value){
         this.health -= value;
+        setText();
     }
 
     public void decreaseCash(int value){
