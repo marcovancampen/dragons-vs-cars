@@ -52,7 +52,7 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
     }
 
     public void deSpawnCar(){
-
+        remove();
     }
 
     public int getHealth(){
@@ -66,7 +66,7 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         switch (border){
             case TOP:
                 LevelEasy.playerStats.decreaseHealth(this.health);
-                remove();
+                deSpawnCar();
         }
 
     }
