@@ -27,9 +27,11 @@ public class Dragons extends DynamicSpriteEntity implements SceneBorderTouchingW
     public void spawnDragon() {
 
     }
+
     public void upgradeDragon() {
 
     }
+
     public void Attack(){
 
     }
