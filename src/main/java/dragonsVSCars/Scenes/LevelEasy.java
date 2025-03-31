@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import dragonsVSCars.Entities.Dragons;
 import dragonsVSCars.Spawners.CarSpawner;
+import dragonsVSCars.Spawners.FireBallSpawner;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
             Dragon.setAnchorPoint(AnchorPoint.CENTER_CENTER);
             dragons.add(Dragon);
             addEntity(Dragon);
+            addEntitySpawner(new FireBallSpawner(10, Dragon.location, Dragon.attackSpeed, Dragon.attackDamage, Dragon.attackRange));
 
         }
     }

@@ -1,17 +1,21 @@
 package dragonsVSCars.Entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.impl.CircleEntity;
+import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import javafx.scene.paint.Color;
 
-public class fireBall extends DynamicSpriteEntity{
+public class Fireball extends DynamicSpriteEntity {
 
     Coordinate2D position;
     public int speed;
     public int damage;
     public int pierce;
 
-    protected fireBall(String resource, Coordinate2D initialLocation, int speed, int damage, int pierce) {
-        super(resource, initialLocation);
+    public Fireball(Coordinate2D initialLocation, int speed, int damage, int pierce) {
+        super("Dragons/white_dragon_small.png",initialLocation);
+        this.setMotion(speed, 0);
         this.position = initialLocation;
         this.speed = speed;
         this.damage = damage;
