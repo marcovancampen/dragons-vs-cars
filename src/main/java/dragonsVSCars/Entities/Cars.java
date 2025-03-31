@@ -15,13 +15,14 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
     protected int speed;
     protected int[] path;
     protected boolean isLast;
+    protected PlayerStats playerStats;
 
-    public Cars(int health, int speed, int[] path, Coordinate2D initialLocations) {
+    public Cars(int health, int speed, int[] path, Coordinate2D initialLocations, PlayerStats playerStats) {
         super("carSprites/Yellow_MICRO_CLEAN_SOUTH_005.png", initialLocations);
         this.health = health;
         this.speed = speed;
         this.path = path;
-
+        this.playerStats = playerStats;
         setMotion(3, Direction.UP);
     }
 
@@ -65,8 +66,8 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
 
         switch (border){
             case TOP:
-                LevelEasy.playerStats.decreaseHealth(this.health);
                 deSpawnCar();
+                this.playerStats.decreaseHealth(this.health);
         }
 
     }
