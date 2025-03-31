@@ -11,15 +11,14 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import java.util.List;
 
 public class Dragons extends DynamicSpriteEntity implements SceneBorderTouchingWatcher , Collided {
-    protected int marge;
-    protected Coordinate2D position;
+    public static int margin = 40;
     protected int attackSpeed;
     protected int attackRange;
     protected int upgradeCost;
     protected int attackDamage;
 
-    protected Dragons(String resource, Coordinate2D initialLocation, int attackSpeed, int attackRange, int upgradeCost, int attackDamage) {
-        super(resource, initialLocation);
+    public  Dragons(Coordinate2D initialLocation, int attackSpeed, int attackRange, int upgradeCost, int attackDamage) {
+        super("Dragons/green_dragon_small.png", initialLocation);
         this.attackSpeed = attackSpeed;
         this.attackRange = attackRange;
         this.upgradeCost = upgradeCost;
@@ -29,12 +28,11 @@ public class Dragons extends DynamicSpriteEntity implements SceneBorderTouchingW
     public void spawnDragon() {
 
     }
-
     public void upgradeDragon() {
 
     }
-
     public void Attack(){
+
 
     }
 

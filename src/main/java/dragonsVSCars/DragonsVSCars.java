@@ -13,7 +13,8 @@ public class DragonsVSCars extends YaegerGame {
     @Override
     public void setupGame() {
         setGameTitle("Dragons VS Cars");
-        setSize(new Size(800, 600));
+        setSize(new Size(1920,1080));
+
     }
 
     @Override
