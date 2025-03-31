@@ -9,4 +9,4 @@ public class fireBall extends DynamicSpriteEntity {
         super(resource, initialLocation);
     }
 }
-}
+

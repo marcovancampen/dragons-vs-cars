@@ -9,4 +9,14 @@ public class GameOver extends StaticScene {
     public void resetCurrentLevel(int level){
 
     }
+
+    @Override
+    public void setupScene() {
+
+    }
+
+    @Override
+    public void setupEntities() {
+
+    }
 }

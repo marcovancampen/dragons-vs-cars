@@ -1,22 +1,22 @@
 package dragonsVSCars.Entities;
 
+import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import com.github.hanyaeger.api.scenes.SceneBorder;
 
 public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatcher {
-    protected int X;
-    protected int Y;
+    protected Coordinate2D position;
     protected int marge;
-    protected image[] sprite;
+    //protected image[] sprite;
     protected int health;
     protected int speed;
     protected int[] path;
     protected boolean isLast;
 
-    Cars(int x, int y, image[] sprite, int health, int speed, int[] path) {
-        this.X = x;
-        this.Y = y;
+    Cars(String resource, Coordinate2D initialLocation, int health, int speed, int[] path) {
+        super(resource, initialLocation);
         this.health = health;
         this.speed = speed;
         this.path = path;
@@ -34,8 +34,8 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
 
     }
 
-    public void deductHealth(){
-
+    public void deductHealth(int attackValue){
+        this.health -= attackValue;
     }
 
     public void deSpawnCar(){
@@ -47,6 +47,8 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
     }
 
 
+    @Override
+    public void notifyBoundaryTouching(SceneBorder sceneBorder) {
 
-
+    }
 }

@@ -21,4 +21,14 @@ public class LevelHard extends StaticScene {
     public void drawUI(){
 
     }
+
+    @Override
+    public void setupScene() {
+
+    }
+
+    @Override
+    public void setupEntities() {
+
+    }
 }
