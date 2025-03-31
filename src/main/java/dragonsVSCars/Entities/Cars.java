@@ -44,8 +44,8 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
 
     }
 
-    public void getHealth(){
-
+    public int getHealth(){
+        return this.health;
     }
 
 
