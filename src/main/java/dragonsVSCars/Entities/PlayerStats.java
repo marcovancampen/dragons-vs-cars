@@ -45,4 +45,8 @@ public class PlayerStats extends TextEntity {
     public void increaseRound(){
         this.round ++;
     }
+
+    public PlayerStats getPlayerStats(){
+        return this;
+    }
 }
