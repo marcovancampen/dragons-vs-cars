@@ -1,7 +1,6 @@
 package dragonsVSCars.Entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
@@ -13,8 +12,8 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
     protected int[] path;
     protected boolean isLast;
 
-    Cars(int health, int speed, int[] path, Coordinate2D initialLocations) {
-        super("levelImage/mapEasy.png", initialLocations);
+    public Cars(int health, int speed, int[] path, Coordinate2D initialLocations) {
+        super("carSprites/Yellow_MICRO_CLEAN_SOUTH_005.png", initialLocations);
         this.health = health;
         this.speed = speed;
         this.path = path;
