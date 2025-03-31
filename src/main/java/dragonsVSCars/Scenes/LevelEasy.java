@@ -58,5 +58,9 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
     public void setupEntitySpawners() {
         addEntitySpawner(new CarSpawner(getWidth(), getHeight()));
     }
+
+    public PlayerStats getPlayerStats() {
+        return playerStats;
+    }
 }
 
