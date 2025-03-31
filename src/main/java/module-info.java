@@ -6,7 +6,6 @@ module dragons.Cars {
 
     opens audio;
     opens backgrounds;
-    opens sprites;
     opens LevelImages;
     opens Dragons;
     opens carSprites;
