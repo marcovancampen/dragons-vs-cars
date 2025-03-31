@@ -14,9 +14,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class EasyButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
-    private final dragonsVSCars dragonsVSCars;
+    private final DragonsVSCars dragonsVSCars;
 
-    public EasyButton(Coordinate2D initialPosition, dragonsVSCars dragonsVSCars) {
+    public EasyButton(Coordinate2D initialPosition, DragonsVSCars dragonsVSCars) {
         super(initialPosition, "Easy");
         this.dragonsVSCars = dragonsVSCars;
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));

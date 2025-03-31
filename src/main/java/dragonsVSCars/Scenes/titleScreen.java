@@ -12,9 +12,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class titleScreen extends StaticScene {
-    private dragonsVSCars dragonsVSCars;
+    private DragonsVSCars dragonsVSCars;
 
-    public titleScreen(dragonsVSCars dragonsVSCars) {
+    public titleScreen(DragonsVSCars dragonsVSCars) {
         this.dragonsVSCars = dragonsVSCars;
     }
 

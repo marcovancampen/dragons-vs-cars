@@ -2,12 +2,9 @@ package dragonsVSCars;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
-import com.github.hanyaeger.tutorial.scenes.GameLevel;
-import com.github.hanyaeger.tutorial.scenes.GameOverScene;
-import com.github.hanyaeger.tutorial.scenes.TitleScene;
 import dragonsVSCars.Scenes.titleScreen;
 
-public class dragonsVSCars extends YaegerGame {
+public class DragonsVSCars extends YaegerGame {
     public static void main(String[] args) {
         launch(args);
     }

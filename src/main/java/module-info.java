@@ -1,5 +1,6 @@
 module dragons.Cars {
     requires hanyaeger;
+    requires java.desktop;
 
     exports dragonsVSCars;
 
