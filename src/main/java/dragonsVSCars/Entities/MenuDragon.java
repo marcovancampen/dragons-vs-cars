@@ -8,7 +8,7 @@ public class MenuDragon extends SpawnMenu{
     private int cost;
     public boolean selected;
 
-    //public void checkPlayerCash(int PlayerStats.cash){
+    public void checkPlayerCash(int PlayerStats){
 
-    //}
+    }
 }

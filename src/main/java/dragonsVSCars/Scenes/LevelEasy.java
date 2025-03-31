@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 public class LevelEasy extends DynamicScene {
     @Override
     public void setupScene() {
-        setBackgroundImage("");
+        setBackgroundImage("LevelImages/mapEasy.png");
     }
 
     @Override
