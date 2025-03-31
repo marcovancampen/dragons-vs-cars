@@ -12,6 +12,7 @@ import dragonsVSCars.Entities.Dragons;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
+import dragonsVSCars.Entities.Dragons;
 
 public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, MouseButtonPressedListener {
     public static PlayerStats playerStats;

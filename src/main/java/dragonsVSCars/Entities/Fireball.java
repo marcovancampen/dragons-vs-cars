@@ -13,9 +13,9 @@ public class Fireball extends DynamicSpriteEntity {
     public int damage;
     public int pierce;
 
-    public Fireball(Coordinate2D initialLocation, int speed, int damage, int pierce) {
+    public Fireball(Coordinate2D initialLocation, int speed, int damage, int pierce, double angle) {
         super("Dragons/white_dragon_small.png",initialLocation);
-        this.setMotion(speed, 0);
+        this.setMotion(speed, angle);
         this.position = initialLocation;
         this.speed = speed;
         this.damage = damage;
