@@ -1,8 +1,18 @@
 package dragonsVSCars.Entities;
 
-public class SpawnMenu {
+import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.impl.RectangleEntity;
+import javafx.scene.paint.Color;
 
-    private int x;
-    private int y;
+public class SpawnMenu extends RectangleEntity {
+
     private String[] dragons;
+
+    public SpawnMenu(Coordinate2D initialLocation, double height) {
+        super(initialLocation);
+        setWidth(200);
+        setHeight(height);
+        setFill(Color.DARKGRAY);
+
+    }
 }

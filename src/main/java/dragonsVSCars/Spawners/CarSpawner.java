@@ -1,5 +1,6 @@
 package dragonsVSCars.Spawners;
 
+import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 import dragonsVSCars.Entities.Cars;
@@ -28,10 +29,15 @@ public class CarSpawner extends EntitySpawner {
     protected void spawnEntities() {
         if (new Random().nextInt(10) < 4) {
             var Cars = new Cars(20, 20, new int[]{0, 1, 2}, new Coordinate2D(50, 700), this.playerStats);
+            Cars.setAnchorPoint(AnchorPoint.CENTER_CENTER);
             spawn(Cars);
             cars.add(Cars);
         }
     }
 
+    public ArrayList<Cars> getCarList(){
+
+        return cars;
+    }
 
 }
