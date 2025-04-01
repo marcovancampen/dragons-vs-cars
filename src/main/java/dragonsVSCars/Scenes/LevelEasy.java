@@ -25,9 +25,6 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
     @Override
 
     public void setupScene() {
-        var spawnmenu = new SpawnMenu(new Coordinate2D(getWidth(), getHeight()), getHeight());
-        spawnmenu.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
-        addEntity(spawnmenu);
         setBackgroundColor(Color.BLACK);
         setBackgroundImage("LevelImages/mapEasy.png");
     }
@@ -36,6 +33,9 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
     public void setupEntities() {
         playerStats = new PlayerStats(new Coordinate2D(50, 50), "hallo", 100, 500, 1);
         addEntity(playerStats);
+        var spawnmenu = new SpawnMenu(new Coordinate2D(getWidth(), getHeight()), getHeight());
+        spawnmenu.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
+        addEntity(spawnmenu);
     }
 
     @Override
