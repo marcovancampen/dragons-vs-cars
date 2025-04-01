@@ -5,9 +5,6 @@ import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import dragonsVSCars.Scenes.LevelEasy;
-
-import java.util.Set;
 
 public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatcher {
     protected int marge;
@@ -16,6 +13,7 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
     protected int[] path;
     protected boolean isLast;
     protected PlayerStats playerStats;
+    private Coordinate2D destination;
 
     public Cars(int health, int speed, int[] path, Coordinate2D initialLocations, PlayerStats playerStats) {
         super("carSprites/Yellow_MICRO_CLEAN_SOUTH_005.png", initialLocations);
@@ -24,10 +22,11 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         this.path = path;
         this.playerStats = playerStats;
         setMotion(3, Direction.UP);
+
+        destination = getAnchorLocation();
     }
 
-    public void spawnCar(){
-
+    public void spawnCar() {
     }
 
     public void moveCar(int richting, int speed){
@@ -42,6 +41,24 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
                     setMotion(speed, Direction.DOWN);
             }
         }
+
+
+
+        public void moveto(Coordinate2D location) {
+        this.destination = location;
+        }
+//        public void moveToDestination() {
+//            if (destination != null) {
+//                Coordinate2D currentLocation = getAnchorLocation();
+//                double deltaX = destination.getX() - currentLocation.getX();
+//                double deltaY = destination.getY() - currentLocation.getY();
+//                double angle = Math.atan2(deltaY, deltaX);
+//                double distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+//                if (distance > 1) {
+//                    setMotion(speed, Direction.fromAngle(angle));
+//                }
+//                }
+//        }
 
 
     private void rotateSprite(){

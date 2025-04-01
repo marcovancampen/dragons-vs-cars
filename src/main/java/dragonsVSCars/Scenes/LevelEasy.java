@@ -3,10 +3,13 @@ package dragonsVSCars.Scenes;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
+import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import dragonsVSCars.Entities.PlayerStats;
 import dragonsVSCars.Entities.SpawnMenu;
+import dragonsVSCars.Entities.maps.LevelEasyMap;
 import dragonsVSCars.Spawners.CarSpawner;
 import dragonsVSCars.Spawners.FireBallSpawner;
 import dragonsVSCars.Entities.Dragons;
@@ -15,7 +18,7 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import dragonsVSCars.Entities.Cars;
 
-public class  LevelEasy extends DynamicScene implements EntitySpawnerContainer, MouseButtonPressedListener {
+public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, MouseButtonPressedListener, TileMapContainer {
     public static PlayerStats playerStats;
     ArrayList<Dragons> dragons = new ArrayList<>();
     ArrayList<Cars> Cars = new ArrayList<>();
@@ -31,9 +34,7 @@ public class  LevelEasy extends DynamicScene implements EntitySpawnerContainer, 
 
     @Override
     public void setupEntities() {
-
         playerStats = new PlayerStats(new Coordinate2D(50, 50), "hallo", 100, 500, 1);
-
         addEntity(playerStats);
     }
 
@@ -68,5 +69,12 @@ public class  LevelEasy extends DynamicScene implements EntitySpawnerContainer, 
         addEntitySpawner(carSpawner);
         Cars = carSpawner.getCarList();
     }
+
+
+    @Override
+    public void setupTileMaps() {
+        addTileMap(new LevelEasyMap());
+    }
+
 }
 
