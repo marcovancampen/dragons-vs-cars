@@ -8,7 +8,6 @@ import dragonsVSCars.Entities.Fireball;
 
 import java.util.ArrayList;
 
-import static com.github.hanyaeger.api.AnchorPoint.*;
 import static dragonsVSCars.Tools.MathUtils.getAngle;
 
 public class FireBallSpawner extends EntitySpawner {
@@ -16,32 +15,45 @@ public class FireBallSpawner extends EntitySpawner {
     private int speed;
     private int damage;
     private int pierce;
+    private int range;
     private ArrayList<Cars> cars;
     private Double lastKnownAngle;
     private Double currentAngle;
 
-    public FireBallSpawner(long intervalInMs, Coordinate2D location, int speed, int damage, int pierce, ArrayList<Cars> cars) {
+    public FireBallSpawner(long intervalInMs, Coordinate2D location, int speed, int damage, int pierce, ArrayList<Cars> cars, int range) {
         super(intervalInMs);
         this.location = location;
         this.speed = speed;
         this.damage = damage;
         this.pierce = pierce;
         this.cars = cars;
+        this.range = range;
     }
 
     @Override
     protected void spawnEntities() {
         Cars closestCar = findClosestCar();
-        if (closestCar != null) {
-            currentAngle = getAngle(this.location, closestCar.getAnchorLocation());
+
+        if (closestCar == null) {
+            return; // No car found, stop execution
         }
-        if (currentAngle != lastKnownAngle) {
-            var fireball = new Fireball(this.location, this.speed, this.damage, this.pierce, currentAngle);
-            fireball.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-            spawn(fireball);
-            lastKnownAngle = currentAngle;
+
+        double distanceToCar = location.distance(closestCar.getAnchorLocation());
+
+        // ✅ Debugging: Print to check distance
+        System.out.println("Closest car distance: " + distanceToCar + " | Attack Range: " + range);
+
+        if (distanceToCar > range) {
+            return; // ✅ If car is out of range, stop execution
         }
+
+        // ✅ If we reach here, the car is in range
+        currentAngle = getAngle(this.location, closestCar.getAnchorLocation());
+        var fireball = new Fireball(this.location, this.speed, this.damage, this.pierce, currentAngle);
+        fireball.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        spawn(fireball);
     }
+
 
     private Cars findClosestCar() {
         Cars closestCar = null;
@@ -49,12 +61,17 @@ public class FireBallSpawner extends EntitySpawner {
 
         for (Cars car : cars) {
             double distance = location.distance(car.getAnchorLocation());
-            if (distance < closestDistance) {
+
+            if (distance < closestDistance) { // Find the closest car first
                 closestDistance = distance;
                 closestCar = car;
             }
         }
 
         return closestCar;
+    }
+
+    public Coordinate2D getLocation() {
+        return location;
     }
 }

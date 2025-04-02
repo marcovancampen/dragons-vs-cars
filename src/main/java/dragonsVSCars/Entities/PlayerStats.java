@@ -36,6 +36,7 @@ public class PlayerStats extends TextEntity {
 
     public void decreaseCash(int value){
         this.cash -= value;
+        setText();
     }
 
     public void increaseCash(int value){
@@ -44,6 +45,9 @@ public class PlayerStats extends TextEntity {
 
     public void increaseRound(){
         this.round ++;
+    }
+    public int getCash(){
+        return  cash;
     }
 
     public PlayerStats getPlayerStats(){
