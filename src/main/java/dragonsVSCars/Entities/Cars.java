@@ -6,6 +6,8 @@ import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 
+import static com.github.hanyaeger.api.entities.Direction.*;
+
 public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatcher {
     protected int marge;
     protected int health;
@@ -21,7 +23,10 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         this.speed = speed;
         this.path = path;
         this.playerStats = playerStats;
-        setMotion(3, Direction.UP);
+        setMotion(3, UP);
+
+
+//        moveto(new Coordinate2D(500, 500));
 
         destination = getAnchorLocation();
     }
@@ -32,32 +37,40 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
     public void moveCar(int richting, int speed){
             switch (richting) {
                 case 0:
-                    setMotion(speed, Direction.LEFT);
+                    setMotion(speed, LEFT);
                 case 1:
-                    setMotion(speed, Direction.RIGHT);
+                    setMotion(speed, RIGHT);
                 case 2:
-                    setMotion(speed, Direction.UP);
+                    setMotion(speed, UP);
                 case 3:
-                    setMotion(speed, Direction.DOWN);
+                    setMotion(speed, DOWN);
             }
         }
 
 
 
-        public void moveto(Coordinate2D location) {
-        this.destination = location;
-        }
-//        public void moveToDestination() {
-//            if (destination != null) {
+//        public void moveto(Coordinate2D location) {
+//        this.destination = location;
+//        }
+//
+//
+//    public void moveToDestination() {
+//            if (this.destination != null) {
 //                Coordinate2D currentLocation = getAnchorLocation();
-//                double deltaX = destination.getX() - currentLocation.getX();
-//                double deltaY = destination.getY() - currentLocation.getY();
+//                double deltaX = this.destination.getX() - currentLocation.getX();
+//                double deltaY = this.destination.getY() - currentLocation.getY();
 //                double angle = Math.atan2(deltaY, deltaX);
 //                double distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+//
 //                if (distance > 1) {
-//                    setMotion(speed, Direction.fromAngle(angle));
+//                    // Normalize movement direction and scale by speed
+//                    double moveX = (deltaX / distance) * speed;
+//                    double moveY = (deltaY / distance) * speed;
+//
+//                    // Move towards the destination
+//                    setAnchorLocation(new Coordinate2D(currentLocation.getX() + moveX, currentLocation.getY() + moveY));
 //                }
-//                }
+//            }
 //        }
 
 

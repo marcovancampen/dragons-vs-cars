@@ -25,6 +25,7 @@ public class CarSpawner extends EntitySpawner {
 
     }
 
+
     @Override
     protected void spawnEntities() {
         if (new Random().nextInt(10) < 4) {

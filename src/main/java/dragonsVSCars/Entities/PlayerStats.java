@@ -26,6 +26,8 @@ public class PlayerStats extends TextEntity {
         setFill(Color.WHITE);
     }
 
+
+
     public void decreaseHealth(int value){
         this.health -= value;
         if(this.health < 0){
