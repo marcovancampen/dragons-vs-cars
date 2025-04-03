@@ -88,6 +88,10 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
     public void setupTimers() {
         addTimer(new CarsMovementTimer(this));
     }
+
+    public int getHealth() {
+    return  this.health;
+    }
 }
 
 
