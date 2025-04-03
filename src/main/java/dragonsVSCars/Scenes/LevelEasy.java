@@ -3,6 +3,8 @@ package dragonsVSCars.Scenes;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
+import com.github.hanyaeger.api.Timer;
+import com.github.hanyaeger.api.entities.Animation;
 import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
@@ -11,9 +13,11 @@ import dragonsVSCars.Entities.*;
 import dragonsVSCars.Entities.maps.LevelEasyMap;
 import dragonsVSCars.Spawners.CarSpawner;
 import dragonsVSCars.Spawners.FireBallSpawner;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, MouseButtonPressedListener, TileMapContainer {
     public static PlayerStats playerStats;
@@ -25,7 +29,9 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
     public void setupScene() {
         setBackgroundColor(Color.BLACK);
         setBackgroundImage("LevelImages/mapEasy.png");
+
     }
+
 
     @Override
     public void setupEntities() {
@@ -37,6 +43,7 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
         addEntity(spawnmenu);
         var MenuDragon = new MenuDragon(new Coordinate2D(1400, 0), 200, "green_dragon_small", "Green Dragon");
         addEntity(MenuDragon);
+
     }
 
     @Override
@@ -109,16 +116,15 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
 
     @Override
     public void setupEntitySpawners() {
+        System.out.println("doin this");
         var carSpawner = new CarSpawner(getWidth(), getHeight(), playerStats);
         addEntitySpawner(carSpawner);
         Cars = carSpawner.getCarList();
     }
 
-
     @Override
     public void setupTileMaps() {
         addTileMap(new LevelEasyMap());
     }
-
 }
 

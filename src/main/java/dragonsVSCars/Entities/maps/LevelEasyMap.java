@@ -18,12 +18,6 @@ public class LevelEasyMap extends TileMap {
 
     @Override
     public int[][] defineMap() {
-        return new int[][]{
-                {0, 1, 1, 1, 0},
-                {0, 1, 0, 0, 0},
-                {0, 1, 0, 0, 0},
-                {0, 1, 0, 0, 0},
-                {0, 1, 0, 0, 0}
-        };
+        return new int[22][15];
     }
 }
