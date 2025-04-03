@@ -7,8 +7,8 @@ import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.hanyaeger.tutorial.entities.Hanny;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import dragonsVSCars.DragonsVSCars;
-import dragonsVSCars.Entities.Buttons.EasyButton;
 import dragonsVSCars.Entities.Buttons.QuitButton;
+import dragonsVSCars.Entities.Buttons.StartButton;
 import dragonsVSCars.Entities.Cars;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -53,9 +53,9 @@ public class GameOver extends StaticScene {
         QuitButton.setFill(Color.GREEN);
         addEntity(QuitButton);
 
-        var easyButton = new EasyButton(new Coordinate2D(getWidth() / 2 - spacing, buttonY), dragonsVSCars);
-        easyButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        easyButton.setFill(Color.GREEN);
-        addEntity(easyButton);
+        var startButton = new StartButton(new Coordinate2D(getWidth() / 2 - spacing, buttonY), dragonsVSCars);
+        startButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        startButton.setFill(Color.GREEN);
+        addEntity(startButton);
     }
 }
