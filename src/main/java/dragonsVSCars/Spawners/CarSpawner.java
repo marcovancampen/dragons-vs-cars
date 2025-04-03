@@ -57,7 +57,9 @@ public class CarSpawner extends EntitySpawner{
             spawner(8,3,100);
             playerStats.setRound(10);
         }else{
-            dragonsVSCars.setActiveScene(3);
+            if (cars.isEmpty()) {
+                dragonsVSCars.setActiveScene(3);
+            }
         }
     }
 
