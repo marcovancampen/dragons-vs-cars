@@ -12,5 +12,4 @@ module dragons.Cars {
     exports com.github.hanyaeger.tutorial.entities;
     exports com.github.hanyaeger.tutorial.scenes;
     exports com.github.hanyaeger.tutorial.entities.buttons;
-    exports dragonsVSCars.Entities.tiles;
 }

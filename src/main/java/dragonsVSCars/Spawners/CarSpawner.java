@@ -26,17 +26,11 @@ public class CarSpawner extends EntitySpawner{
     private PlayerStats playerStats;
     public ArrayList<Cars> cars = new ArrayList<>();
 
-
-//    private final ArrayList<CarsMovementTimer> timers1 = new ArrayList<>();  // Store timers
-    private final List<Timer> timers = new ArrayList<>();
-
     public CarSpawner(double sceneWidth, double sceneHeight, PlayerStats playerStats) {
         super(1000);
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
         this.playerStats = playerStats;
-
-
     }
 
 
@@ -52,7 +46,6 @@ public class CarSpawner extends EntitySpawner{
     }
 
     public ArrayList<Cars> getCarList(){
-
         return cars;
     }
 }

@@ -10,7 +10,6 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import dragonsVSCars.Entities.*;
-import dragonsVSCars.Entities.maps.LevelEasyMap;
 import dragonsVSCars.Spawners.CarSpawner;
 import dragonsVSCars.Spawners.FireBallSpawner;
 import javafx.scene.Scene;
@@ -19,7 +18,7 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, MouseButtonPressedListener, TileMapContainer {
+public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, MouseButtonPressedListener {
     public static PlayerStats playerStats;
     ArrayList<Dragons> dragons = new ArrayList<>();
     ArrayList<Cars> Cars = new ArrayList<>();
@@ -120,11 +119,6 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
         var carSpawner = new CarSpawner(getWidth(), getHeight(), playerStats);
         addEntitySpawner(carSpawner);
         Cars = carSpawner.getCarList();
-    }
-
-    @Override
-    public void setupTileMaps() {
-        addTileMap(new LevelEasyMap());
     }
 }
 
