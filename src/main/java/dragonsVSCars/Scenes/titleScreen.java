@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.scenes.StaticScene;
 import dragonsVSCars.Entities.Buttons.EasyButton;
 import dragonsVSCars.Entities.Buttons.HardButton;
 import dragonsVSCars.*;
+import dragonsVSCars.Entities.Buttons.QuitButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -42,9 +43,9 @@ public class titleScreen extends StaticScene {
         easyButton.setFill(Color.GREEN);
         addEntity(easyButton);
 
-        var hardButton = new HardButton(new Coordinate2D(getWidth() / 2 + spacing, buttonY), dragonsVSCars);
-        hardButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        hardButton.setFill(Color.RED);
-        addEntity(hardButton);
+        var QuitButton = new QuitButton(new Coordinate2D(getWidth() / 2 + spacing, buttonY), dragonsVSCars);
+        QuitButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        QuitButton.setFill(Color.GREEN);
+        addEntity(QuitButton);
     }
 }

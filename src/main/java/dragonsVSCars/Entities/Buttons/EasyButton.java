@@ -8,35 +8,22 @@ import com.github.hanyaeger.api.userinput.MouseEnterListener;
 import com.github.hanyaeger.api.userinput.MouseExitListener;
 import dragonsVSCars.*;
 import javafx.scene.Cursor;
+import javafx.scene.control.MenuButton;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class EasyButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
-    private final DragonsVSCars dragonsVSCars;
+public class EasyButton extends MenuButtons {
+
 
     public EasyButton(Coordinate2D initialPosition, DragonsVSCars dragonsVSCars) {
-        super(initialPosition, "Easy");
-        this.dragonsVSCars = dragonsVSCars;
-        setFont(Font.font("Roboto", FontWeight.BOLD, 30));
+        super(initialPosition, "Easy", dragonsVSCars);
     }
 
     @Override
-    public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
+    public void buttonAction() {
         dragonsVSCars.setActiveScene(1);
-    }
-
-    @Override
-    public void onMouseEntered(){
-        setFill(Color.VIOLET);
-        setCursor(Cursor.HAND);
-    }
-
-    @Override
-    public void onMouseExited(){
-        setFill(Color.GREEN);
-        setCursor(Cursor.DEFAULT);
     }
 }
 
