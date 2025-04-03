@@ -52,9 +52,11 @@ public class PlayerStats extends TextEntity {
         setText();
     }
 
-    public void increaseRound(){
-        this.round ++;
+    public void setRound(int round){
+        this.round = round;
+        setText();
     }
+
     public int getCash(){
         return  cash;
     }

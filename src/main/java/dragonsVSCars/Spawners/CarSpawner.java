@@ -25,23 +25,36 @@ public class CarSpawner extends EntitySpawner{
     private final double sceneHeight;
     private PlayerStats playerStats;
     public ArrayList<Cars> cars = new ArrayList<>();
+    public int totalCarsSpawned;
 
     public CarSpawner(double sceneWidth, double sceneHeight, PlayerStats playerStats) {
         super(1000);
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
         this.playerStats = playerStats;
+        this.totalCarsSpawned = 0;
     }
 
 
     @Override
     protected void spawnEntities() {
         System.out.println("Spawning entities");
-        if (new Random().nextInt(10) < 4) {
-            Cars car = new Cars(20, 5, new Coordinate2D(180, 775), this.playerStats);
+        if (totalCarsSpawned<20) {
+            spawner(4,1);
+            playerStats.setRound(1);
+        } else if (totalCarsSpawned < 40) {
+            spawner(3,2);
+            playerStats.setRound(2);
+        }
+    }
+
+    private void spawner(int chance, int speed){
+        if (new Random().nextInt(10) < chance) {
+            Cars car = new Cars(20, speed, new Coordinate2D(180, 775), this.playerStats);
             car.setAnchorPoint(AnchorPoint.CENTER_CENTER);
             spawn(car);
             cars.add(car);
+            totalCarsSpawned++;
         }
     }
 
