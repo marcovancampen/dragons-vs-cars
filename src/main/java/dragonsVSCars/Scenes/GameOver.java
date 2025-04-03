@@ -31,6 +31,7 @@ public class GameOver extends StaticScene {
         gameOverText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         gameOverText.setFill(Color.RED);
         gameOverText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
+        gameOverText.setStrokeColor(Color.BLACK);
         addEntity(gameOverText);
 
     }

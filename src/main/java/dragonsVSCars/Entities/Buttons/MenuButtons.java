@@ -21,6 +21,7 @@ public abstract class MenuButtons extends TextEntity implements MouseButtonPress
         super(initialPosition, text);
         this.dragonsVSCars = dragonsVSCars;
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));
+        setStrokeColor(Color.BLACK);
     }
 
     public abstract void buttonAction();

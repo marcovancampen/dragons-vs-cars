@@ -32,6 +32,7 @@ public class titleScreen extends StaticScene {
         title.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         title.setFill(Color.RED);
         title.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
+        title.setStrokeColor(Color.BLACK);
         addEntity(title);
 
         double buttonY = getHeight() / 2 + 100;
