@@ -35,19 +35,17 @@ public class FireBallSpawner extends EntitySpawner {
         Cars closestCar = findClosestCar();
 
         if (closestCar == null) {
-            return; // No car found, stop execution
+            return;
         }
 
         double distanceToCar = location.distance(closestCar.getAnchorLocation());
-
-        // ✅ Debugging: Print to check distance
         System.out.println("Closest car distance: " + distanceToCar + " | Attack Range: " + range);
 
         if (distanceToCar > range) {
-            return; // ✅ If car is out of range, stop execution
+            return;
         }
 
-        // ✅ If we reach here, the car is in range
+
         currentAngle = getAngle(this.location, closestCar.getAnchorLocation());
         var fireball = new Fireball(this.location, this.speed, this.damage, this.pierce, currentAngle);
         fireball.setAnchorPoint(AnchorPoint.CENTER_CENTER);
