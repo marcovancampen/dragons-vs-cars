@@ -1,6 +1,7 @@
 package dragonsVSCars.Entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
@@ -8,7 +9,7 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 
 import static com.github.hanyaeger.api.entities.Direction.*;
 
-public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatcher {
+public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider {
     protected int marge;
     protected int health;
     protected int speed;
@@ -78,7 +79,12 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
 
     }
 
-    public void deductHealth(){
+    public void deductHealth(int damage){
+        health -= damage;
+        if (health <= 0){
+            this.playerStats.increaseCash(20);
+            deSpawnCar();
+        }
 
     }
 

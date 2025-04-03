@@ -43,6 +43,7 @@ public class PlayerStats extends TextEntity {
 
     public void increaseCash(int value){
         this.cash += value;
+        setText();
     }
 
     public void increaseRound(){

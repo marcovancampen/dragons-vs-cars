@@ -47,7 +47,7 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
             if (dragon != null &&  playerStats.getCash() >= dragon.upgradeCost ) {
                 playerStats.decreaseCash(dragon.upgradeCost);
                 var FireBall = getFireBallAt(dragon.location);
-                var upgradedDragon = new Dragons(dragon.location,"green_dragon_big", dragon.attackSpeed, dragon.attackRange, 999999999, dragon.attackDamage);
+                var upgradedDragon = new Dragons(dragon.location,"green_dragon_big", dragon.attackSpeed, dragon.attackRange, 999999999, dragon.attackDamage, dragon.pierceDamage);
                 upgradedDragon.setAnchorPoint(AnchorPoint.CENTER_CENTER);
                 dragon.remove();
                 addEntity(upgradedDragon);
@@ -56,11 +56,12 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
         if (!checkDragons(coordinate2D) && playerStats.getCash() >= MenuDragon.cost) {
             playerStats.decreaseCash(MenuDragon.cost);
             String name =  MenuDragon.getName();
-            var Dragon = new Dragons(coordinate2D, name , 10, 300, 10, 10 );
+            var Dragon = new Dragons(coordinate2D, name , 10, 300, 10, 10 , 10);
             Dragon.setAnchorPoint(AnchorPoint.CENTER_CENTER);
             dragons.add(Dragon);
             addEntity(Dragon);
-            var fireballSpawner = new FireBallSpawner(1000, Dragon.location, Dragon.attackSpeed, Dragon.attackDamage, Dragon.attackRange, Cars, Dragon.attackRange);
+            var fireballSpawner = new FireBallSpawner(1000, Dragon.location, Dragon.attackSpeed, Dragon.attackDamage, Dragon.pierceDamage, Cars, Dragon.attackRange
+            );
             addEntitySpawner(fireballSpawner);
             FireBallSpawners.add(fireballSpawner);
 
