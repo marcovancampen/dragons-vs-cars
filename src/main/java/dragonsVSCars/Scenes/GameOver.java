@@ -14,9 +14,11 @@ import javafx.scene.text.FontWeight;
 public class GameOver extends StaticScene {
 
     private final DragonsVSCars dragonsVSCars;
+    private final String text;
 
-    public GameOver(DragonsVSCars dragonsVSCars) {
+    public GameOver(DragonsVSCars dragonsVSCars, String text) {
         this.dragonsVSCars = dragonsVSCars;
+        this.text = text;
 
     }
 
@@ -25,7 +27,7 @@ public class GameOver extends StaticScene {
         setBackgroundImage("backgrounds/TitleScreen.jpeg");
         var gameOverText = new TextEntity(
                 new Coordinate2D(getWidth() / 2, getHeight() / 3),
-                "YOU LOSE"
+                text
         );
 
         gameOverText.setAnchorPoint(AnchorPoint.CENTER_CENTER);

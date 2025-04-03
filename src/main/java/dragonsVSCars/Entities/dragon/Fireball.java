@@ -40,7 +40,7 @@ public class Fireball extends Tower implements SceneBorderTouchingWatcher, Colli
 
     @Override
     public void notifyBoundaryTouching(SceneBorder border) {
-
+        remove();
     }
 
 

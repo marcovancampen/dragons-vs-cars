@@ -128,7 +128,7 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
     @Override
     public void setupEntitySpawners() {
         System.out.println("doin this");
-        var carSpawner = new CarSpawner(getWidth(), getHeight(), playerStats);
+        var carSpawner = new CarSpawner(getWidth(), getHeight(), playerStats, dragonsVSCars);
         addEntitySpawner(carSpawner);
         Cars = carSpawner.getCarList();
     }

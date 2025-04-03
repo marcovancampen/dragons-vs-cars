@@ -3,6 +3,7 @@ package dragonsVSCars.Spawners;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
+import dragonsVSCars.DragonsVSCars;
 import dragonsVSCars.Entities.Cars;
 import dragonsVSCars.Entities.PlayerStats;
 
@@ -14,11 +15,13 @@ public class CarSpawner extends EntitySpawner{
     private final PlayerStats playerStats;
     public ArrayList<Cars> cars = new ArrayList<>();
     public int totalCarsSpawned;
+    private final DragonsVSCars dragonsVSCars;
 
-    public CarSpawner(double sceneWidth, double sceneHeight, PlayerStats playerStats) {
+    public CarSpawner(double sceneWidth, double sceneHeight, PlayerStats playerStats, DragonsVSCars dragonsVSCars) {
         super(1000);
         this.playerStats = playerStats;
         this.totalCarsSpawned = 0;
+        this.dragonsVSCars = dragonsVSCars;
     }
 
     @Override
@@ -53,6 +56,8 @@ public class CarSpawner extends EntitySpawner{
         }else if (totalCarsSpawned < 200) {
             spawner(8,3,100);
             playerStats.setRound(10);
+        }else{
+            dragonsVSCars.setActiveScene(3);
         }
     }
 

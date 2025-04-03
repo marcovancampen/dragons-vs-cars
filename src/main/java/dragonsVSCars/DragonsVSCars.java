@@ -21,6 +21,7 @@ public class DragonsVSCars extends YaegerGame {
     public void setupScenes(){
         addScene(0, new titleScreen(this));
         addScene(1, new LevelEasy(this));
-        addScene(2, new GameOver(this));
+        addScene(2, new GameOver(this, "YOU LOSE"));
+        addScene(3, new GameOver(this, "YOU WIN"));
     }
 }
