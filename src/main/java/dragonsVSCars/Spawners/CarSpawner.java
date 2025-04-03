@@ -38,7 +38,7 @@ public class CarSpawner extends EntitySpawner{
     protected void spawnEntities() {
         System.out.println("Spawning entities");
         if (new Random().nextInt(10) < 4) {
-            Cars car = new Cars(20, 1, new Coordinate2D(180, 775), this.playerStats);
+            Cars car = new Cars(20, 5, new Coordinate2D(180, 775), this.playerStats);
             car.setAnchorPoint(AnchorPoint.CENTER_CENTER);
             spawn(car);
             cars.add(car);

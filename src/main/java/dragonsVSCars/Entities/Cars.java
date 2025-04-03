@@ -3,11 +3,9 @@ package dragonsVSCars.Entities;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.TimerContainer;
-import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.github.hanyaeger.api.Timer;
 
 import java.util.ArrayList;
 
@@ -20,7 +18,6 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
     protected Coordinate2D[] path;
     protected boolean isLast;
     protected PlayerStats playerStats;
-    private Coordinate2D destination;
     private int currentPathIndex;
     private final ArrayList<CarsMovementTimer> timers = new ArrayList<>();  // Store timers
 
@@ -38,25 +35,9 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
                 new Coordinate2D(255, 400),
                 new Coordinate2D(255, 185),
                 new Coordinate2D(1415, 185),
-                new Coordinate2D(1415, 25)
+                new Coordinate2D(1415, -50)
         };
     }
-
-    public void spawnCar() {
-    }
-
-    public void moveCar(int richting, int speed){
-            switch (richting) {
-                case 0:
-                    setMotion(speed, LEFT);
-                case 1:
-                    setMotion(speed, RIGHT);
-                case 2:
-                    setMotion(speed, UP);
-                case 3:
-                    setMotion(speed, DOWN);
-            }
-        }
 
     public void move() {
         System.out.println(getAnchorLocation());
@@ -77,6 +58,7 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
             setAnchorLocation(new Coordinate2D(currentLocation.getX() + moveX, currentLocation.getY() + moveY));
         } else {
             currentPathIndex++;
+            rotateSprite();
         }
     }
 

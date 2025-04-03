@@ -8,7 +8,10 @@ import dragonsVSCars.DragonsVSCars;
 import dragonsVSCars.Entities.Cars;
 
 public class GameOver extends StaticScene {
-    private DragonsVSCars dragonsVSCars;
+
+    public GameOver() {
+
+    }
 
     public void resetCurrentLevel(int level){
 
@@ -21,6 +24,6 @@ public class GameOver extends StaticScene {
 
     @Override
     public void setupEntities() {
-
+        setBackgroundImage("backgrounds/TitleScreen.jpeg");
     }
 }
