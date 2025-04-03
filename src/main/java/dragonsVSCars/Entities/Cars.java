@@ -6,28 +6,23 @@ import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-
 import java.util.ArrayList;
 
-import static com.github.hanyaeger.api.entities.Direction.*;
-
 public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, TimerContainer, Collider {
-    protected int marge;
     protected int health;
     protected int speed;
     protected Coordinate2D[] path;
-    protected boolean isLast;
     protected PlayerStats playerStats;
     private int currentPathIndex;
-    private final ArrayList<CarsMovementTimer> timers = new ArrayList<>();  // Store timers
+    private final ArrayList<Cars> carList;
 
-
-    public Cars(int health, int speed, Coordinate2D initialLocations, PlayerStats playerStats) {
+    public Cars(int health, int speed, Coordinate2D initialLocations, PlayerStats playerStats, ArrayList<Cars> carList) {
         super("carSprites/Yellow_MICRO_CLEAN_SOUTH_005.png", initialLocations);
         this.health = health;
         this.speed = speed;
         this.playerStats = playerStats;
         this.currentPathIndex = 0;
+        this.carList = carList;
         this.path = new Coordinate2D[]{
                 new Coordinate2D(180, 615),
                 new Coordinate2D(1415, 615),
@@ -39,7 +34,8 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         };
     }
 
-    public void move() {        if (currentPathIndex < path.length) {
+    public void move() {
+        if (currentPathIndex < path.length) {
             moveToDestination(path[currentPathIndex]);  // Move towards the current waypoint
         }
     }
@@ -60,7 +56,6 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         }
     }
 
-
     private void rotateSprite(){
 
     }
@@ -70,6 +65,7 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         if (health <= 0){
             this.playerStats.increaseCash(20);
             deSpawnCar();
+            carList.remove(this);
         }
 
     }
@@ -78,14 +74,8 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         remove();
     }
 
-    public int getHealth(){
-        return this.health;
-    }
-
-
     @Override
     public void notifyBoundaryTouching(SceneBorder border) {
-
         switch (border){
             case TOP:
                 deSpawnCar();

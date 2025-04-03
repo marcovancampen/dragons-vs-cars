@@ -12,19 +12,22 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class HardButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
-    private final DragonsVSCars dragonsVSCars;
+public abstract class MenuButtons extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
 
-    public HardButton(Coordinate2D initialPosition, DragonsVSCars dragonsVSCars) {
-        super(initialPosition, "Hard");
+
+    protected DragonsVSCars dragonsVSCars;
+
+    public MenuButtons(Coordinate2D initialPosition, String text, DragonsVSCars dragonsVSCars) {
+        super(initialPosition, text);
         this.dragonsVSCars = dragonsVSCars;
-        setFill(Color.ORANGE);
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));
     }
 
+    public abstract void buttonAction();
+
     @Override
-    public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        dragonsVSCars.setActiveScene(1);
+    public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
+        buttonAction();
     }
 
     @Override
@@ -35,7 +38,7 @@ public class HardButton extends TextEntity implements MouseButtonPressedListener
 
     @Override
     public void onMouseExited(){
-        setFill(Color.RED);
+        setFill(Color.GREEN);
         setCursor(Cursor.DEFAULT);
     }
 }

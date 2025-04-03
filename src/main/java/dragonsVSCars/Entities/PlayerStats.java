@@ -3,7 +3,6 @@ package dragonsVSCars.Entities;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import dragonsVSCars.DragonsVSCars;
-import dragonsVSCars.Scenes.GameOver;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -59,9 +58,5 @@ public class PlayerStats extends TextEntity {
 
     public int getCash(){
         return  cash;
-    }
-
-    public PlayerStats getPlayerStats(){
-        return this;
     }
 }
