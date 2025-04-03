@@ -2,34 +2,44 @@ package dragonsVSCars.Entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
+import com.github.hanyaeger.api.Timer;
+
+import java.util.ArrayList;
 
 import static com.github.hanyaeger.api.entities.Direction.*;
 
-public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collider {
+public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, TimerContainer {
     protected int marge;
     protected int health;
     protected int speed;
-    protected int[] path;
+    protected Coordinate2D[] path;
     protected boolean isLast;
     protected PlayerStats playerStats;
     private Coordinate2D destination;
+    private int currentPathIndex;
+    private final ArrayList<CarsMovementTimer> timers = new ArrayList<>();  // Store timers
 
-    public Cars(int health, int speed, int[] path, Coordinate2D initialLocations, PlayerStats playerStats) {
+
+    public Cars(int health, int speed, Coordinate2D initialLocations, PlayerStats playerStats) {
         super("carSprites/Yellow_MICRO_CLEAN_SOUTH_005.png", initialLocations);
         this.health = health;
         this.speed = speed;
-        this.path = path;
         this.playerStats = playerStats;
-        setMotion(3, UP);
-
-
-//        moveto(new Coordinate2D(500, 500));
-
-        destination = getAnchorLocation();
+        this.currentPathIndex = 0;
+        this.path = new Coordinate2D[]{
+                new Coordinate2D(180, 615),
+                new Coordinate2D(1415, 615),
+                new Coordinate2D(1415, 400),
+                new Coordinate2D(255, 400),
+                new Coordinate2D(255, 185),
+                new Coordinate2D(1415, 185),
+                new Coordinate2D(1415, 25)
+        };
     }
 
     public void spawnCar() {
@@ -48,31 +58,27 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
             }
         }
 
+    public void move() {
+        System.out.println(getAnchorLocation());
+        if (currentPathIndex < path.length) {
+            moveToDestination(path[currentPathIndex]);  // Move towards the current waypoint
+        }
+    }
 
+    private void moveToDestination(Coordinate2D destination) {
+        Coordinate2D currentLocation = getAnchorLocation();
+        double deltaX = destination.getX() - currentLocation.getX();
+        double deltaY = destination.getY() - currentLocation.getY();
+        double distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-//        public void moveto(Coordinate2D location) {
-//        this.destination = location;
-//        }
-//
-//
-//    public void moveToDestination() {
-//            if (this.destination != null) {
-//                Coordinate2D currentLocation = getAnchorLocation();
-//                double deltaX = this.destination.getX() - currentLocation.getX();
-//                double deltaY = this.destination.getY() - currentLocation.getY();
-//                double angle = Math.atan2(deltaY, deltaX);
-//                double distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-//
-//                if (distance > 1) {
-//                    // Normalize movement direction and scale by speed
-//                    double moveX = (deltaX / distance) * speed;
-//                    double moveY = (deltaY / distance) * speed;
-//
-//                    // Move towards the destination
-//                    setAnchorLocation(new Coordinate2D(currentLocation.getX() + moveX, currentLocation.getY() + moveY));
-//                }
-//            }
-//        }
+        if (distance > 1) {
+            double moveX = (deltaX / distance) * speed;
+            double moveY = (deltaY / distance) * speed;
+            setAnchorLocation(new Coordinate2D(currentLocation.getX() + moveX, currentLocation.getY() + moveY));
+        } else {
+            currentPathIndex++;
+        }
+    }
 
 
     private void rotateSprite(){
@@ -107,6 +113,11 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         }
 
     }
+
+    @Override
+    public void setupTimers() {
+        addTimer(new CarsMovementTimer(this));
     }
+}
 
 
