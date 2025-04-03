@@ -4,7 +4,6 @@ import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
-import dragonsVSCars.Entities.Buttons.HardButton;
 import dragonsVSCars.*;
 import dragonsVSCars.Entities.Buttons.QuitButton;
 import dragonsVSCars.Entities.Buttons.StartButton;

@@ -1,11 +1,8 @@
 package dragonsVSCars.Entities;
 
 import com.github.hanyaeger.api.Timer;
-import com.github.hanyaeger.api.TimerContainer;
 
-import java.util.List;
-
-public class CarsMovementTimer extends Timer implements TimerContainer {
+public class CarsMovementTimer extends Timer {
 
     private Cars car;
 
@@ -17,15 +14,5 @@ public class CarsMovementTimer extends Timer implements TimerContainer {
     @Override
     public void onAnimationUpdate(long l) {
         car.move();
-    }
-
-    @Override
-    public void setupTimers() {
-
-    }
-
-    @Override
-    public List<Timer> getTimers() {
-        return List.of();
     }
 }

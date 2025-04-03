@@ -4,12 +4,9 @@ import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
-import com.github.hanyaeger.tutorial.entities.Hanny;
-import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import dragonsVSCars.DragonsVSCars;
 import dragonsVSCars.Entities.Buttons.QuitButton;
 import dragonsVSCars.Entities.Buttons.StartButton;
-import dragonsVSCars.Entities.Cars;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -23,10 +20,6 @@ public class GameOver extends StaticScene {
 
     }
 
-    public void resetCurrentLevel(int level){
-
-    }
-
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/TitleScreen.jpeg");
@@ -34,6 +27,7 @@ public class GameOver extends StaticScene {
                 new Coordinate2D(getWidth() / 2, getHeight() / 3),
                 "YOU LOSE"
         );
+
         gameOverText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         gameOverText.setFill(Color.RED);
         gameOverText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));

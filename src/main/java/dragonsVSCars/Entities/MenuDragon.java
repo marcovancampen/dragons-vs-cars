@@ -31,6 +31,7 @@ public class MenuDragon extends TextEntity implements MouseButtonPressedListener
         selected = true;
 
     }
+
     public void notEnoughCost() {
         setFill(Color.RED);
     }

@@ -7,13 +7,10 @@ import com.github.hanyaeger.api.userinput.MouseEnterListener;
 import com.github.hanyaeger.api.userinput.MouseExitListener;
 import dragonsVSCars.DragonsVSCars;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-
-import java.util.Optional;
 
 public abstract class MenuButtons extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
 
@@ -24,7 +21,6 @@ public abstract class MenuButtons extends TextEntity implements MouseButtonPress
         super(initialPosition, text);
         this.dragonsVSCars = dragonsVSCars;
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));
-
     }
 
     public abstract void buttonAction();

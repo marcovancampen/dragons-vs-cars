@@ -6,17 +6,12 @@ import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-
 import java.util.ArrayList;
 
-import static com.github.hanyaeger.api.entities.Direction.*;
-
 public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, TimerContainer, Collider {
-    protected int marge;
     protected int health;
     protected int speed;
     protected Coordinate2D[] path;
-    protected boolean isLast;
     protected PlayerStats playerStats;
     private int currentPathIndex;
     private final ArrayList<Cars> carList;
@@ -61,7 +56,6 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         }
     }
 
-
     private void rotateSprite(){
 
     }
@@ -80,14 +74,8 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         remove();
     }
 
-    public int getHealth(){
-        return this.health;
-    }
-
-
     @Override
     public void notifyBoundaryTouching(SceneBorder border) {
-
         switch (border){
             case TOP:
                 deSpawnCar();
