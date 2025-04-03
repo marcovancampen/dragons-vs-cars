@@ -1,31 +1,24 @@
-package dragonsVSCars.Entities;
+package dragonsVSCars.Entities.dragon;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
-import com.github.hanyaeger.api.entities.impl.CircleEntity;
-import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import javafx.scene.paint.Color;
+import dragonsVSCars.Entities.Cars;
 
 import java.util.List;
 
-public class Fireball extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Collided {
+public class Fireball extends Tower implements SceneBorderTouchingWatcher, Collided {
 
     Coordinate2D position;
-    public int speed;
-    public int damage;
-    public int pierce;
+
 
     public Fireball(Coordinate2D initialLocation, int speed, int damage, int pierce, double angle) {
-        super("Dragons/fireball.png",initialLocation);
+        super("Dragons/fireball.png",initialLocation, speed, damage, pierce);
         this.setMotion(speed, angle);
         this.position = initialLocation;
-        this.speed = speed;
-        this.damage = damage;
-        this.pierce = pierce;
 
     }
 
@@ -35,9 +28,9 @@ public class Fireball extends DynamicSpriteEntity implements SceneBorderTouching
 
     private void hitTarget(Cars cars) {
        var tempPierce = pierce;
-        decreasePierce(cars.health);
+        decreasePierce(cars.getHealth());
         cars.deductHealth(tempPierce);
-        System.out.println(cars.health);
+        System.out.println(cars.getHealth());
         if(pierce <= 0){
             remove();
         }

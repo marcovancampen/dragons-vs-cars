@@ -4,7 +4,7 @@ import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 import dragonsVSCars.Entities.Cars;
-import dragonsVSCars.Entities.Fireball;
+import dragonsVSCars.Entities.dragon.Fireball;
 
 import java.util.ArrayList;
 

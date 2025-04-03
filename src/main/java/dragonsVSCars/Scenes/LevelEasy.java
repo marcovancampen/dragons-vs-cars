@@ -3,21 +3,16 @@ package dragonsVSCars.Scenes;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
-import com.github.hanyaeger.api.Timer;
-import com.github.hanyaeger.api.entities.Animation;
-import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import dragonsVSCars.DragonsVSCars;
 import dragonsVSCars.Entities.*;
+import dragonsVSCars.Entities.dragon.Dragons;
 import dragonsVSCars.Spawners.CarSpawner;
 import dragonsVSCars.Spawners.FireBallSpawner;
-import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, MouseButtonPressedListener {
     public static PlayerStats playerStats;
@@ -58,29 +53,12 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
             var dragon = getDragonAt(coordinate2D);
 
             if (dragon != null &&  playerStats.getCash() >= dragon.upgradeCost ) {
-                playerStats.decreaseCash(dragon.upgradeCost);
-                var FireBall = getFireBallAt(dragon.location);
-                var upgradedDragon = new Dragons(dragon.location,"green_dragon_big", dragon.attackSpeed+20, dragon.attackRange+40, 999999999, dragon.attackDamage+20, dragon.pierceDamage+20);
-                upgradedDragon.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-                var upgradedFireball = new FireBallSpawner(1000 - upgradedDragon.attackSpeed, upgradedDragon.location, upgradedDragon.attackSpeed, upgradedDragon.attackDamage, upgradedDragon.pierceDamage, Cars, upgradedDragon.attackRange);
-                dragon.remove();
-                FireBall.remove();
-                addEntity(upgradedDragon);
-                addEntitySpawner(upgradedFireball);
-                FireBallSpawners.add(upgradedFireball);
+                upgradeDragon(dragon);
             }
         }
         if (!checkDragons(coordinate2D) && playerStats.getCash() >= MenuDragon.cost) {
-            playerStats.decreaseCash(MenuDragon.cost);
-            String name =  MenuDragon.getName();
-            var Dragon = new Dragons(coordinate2D, name , 10, 300, 10, 10 , 10);
-            Dragon.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-            dragons.add(Dragon);
-            addEntity(Dragon);
-            var fireballSpawner = new FireBallSpawner(1000, Dragon.location, Dragon.attackSpeed, Dragon.attackDamage, Dragon.pierceDamage, Cars, Dragon.attackRange);
-            addEntitySpawner(fireballSpawner);
-            FireBallSpawners.add(fireballSpawner);
 
+            placeDragon(coordinate2D);
         }
 
     }
@@ -122,6 +100,29 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
             }
         }
        return false;
+    }
+    public void upgradeDragon(Dragons dragon) {
+        playerStats.decreaseCash(dragon.upgradeCost);
+        var FireBall = getFireBallAt(dragon.location);
+        var upgradedDragon = new Dragons(dragon.location,"green_dragon_big", dragon.speed+20, dragon.attackRange+40, 999999999, dragon.damage+20, dragon.pierce+20);
+        upgradedDragon.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        var upgradedFireball = new FireBallSpawner(1000 - upgradedDragon.speed, upgradedDragon.location, upgradedDragon.speed, upgradedDragon.damage, upgradedDragon.pierce, Cars, upgradedDragon.attackRange);
+        dragon.remove();
+        FireBall.remove();
+        addEntity(upgradedDragon);
+        addEntitySpawner(upgradedFireball);
+        FireBallSpawners.add(upgradedFireball);
+    }
+    public void placeDragon(Coordinate2D coordinate2D){
+        playerStats.decreaseCash(MenuDragon.cost);
+        String name =  MenuDragon.getName();
+        var Dragon = new Dragons(coordinate2D, name , 10, 300, 10, 10 , 10);
+        Dragon.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        dragons.add(Dragon);
+        addEntity(Dragon);
+        var fireballSpawner = new FireBallSpawner(1000, Dragon.location, Dragon.speed, Dragon.damage, Dragon.damage, Cars, Dragon.attackRange);
+        addEntitySpawner(fireballSpawner);
+        FireBallSpawners.add(fireballSpawner);
     }
 
     @Override
