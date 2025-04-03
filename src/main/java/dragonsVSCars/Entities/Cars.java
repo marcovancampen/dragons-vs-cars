@@ -23,20 +23,30 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         this.playerStats = playerStats;
         this.currentPathIndex = 0;
         this.carList = carList;
+//        this.path = new Coordinate2D[]{
+//                new Coordinate2D(180, 615),
+//                new Coordinate2D(1415, 615),
+//                new Coordinate2D(1415, 400),
+//                new Coordinate2D(255, 400),
+//                new Coordinate2D(255, 185),
+//                new Coordinate2D(1415, 185),
+//                new Coordinate2D(1415, -50)
+//        };
         this.path = new Coordinate2D[]{
-                new Coordinate2D(180, 615),
-                new Coordinate2D(1415, 615),
-                new Coordinate2D(1415, 400),
-                new Coordinate2D(255, 400),
-                new Coordinate2D(255, 185),
-                new Coordinate2D(1415, 185),
-                new Coordinate2D(1415, -50)
+                new Coordinate2D(calculateXpoint(3), calculateYpoint(12)),
+                new Coordinate2D(calculateXpoint(20), calculateYpoint(12)),
+                new Coordinate2D(calculateXpoint(20), calculateYpoint(8)),
+                new Coordinate2D(calculateXpoint(4), calculateYpoint(8)),
+                new Coordinate2D(calculateXpoint(4), calculateYpoint(4)),
+                new Coordinate2D(calculateXpoint(20), calculateYpoint(4)),
+                new Coordinate2D(calculateXpoint(20), calculateYpoint(0))
         };
     }
 
     public void move() {
         if (currentPathIndex < path.length) {
             moveToDestination(path[currentPathIndex]);  // Move towards the current waypoint
+            rotateSprite(currentPathIndex);
         }
     }
 
@@ -52,12 +62,12 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
             setAnchorLocation(new Coordinate2D(currentLocation.getX() + moveX, currentLocation.getY() + moveY));
         } else {
             currentPathIndex++;
-            rotateSprite();
         }
     }
 
-    private void rotateSprite(){
-
+    private void rotateSprite(int index){
+        int[] rotations = {180, 90, 180, 270, 180, 90, 180};
+        this.setRotate(rotations[index]);
     }
 
     public void deductHealth(int damage){
@@ -65,7 +75,7 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         if (health <= 0){
             this.playerStats.increaseCash(20);
             deSpawnCar();
-            carList.remove(this);
+            carList.remove(this); //mischien naar deSpawnCar?
         }
 
     }
@@ -91,6 +101,18 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
 
     public int getHealth() {
     return  this.health;
+    }
+
+    public int calculateXpoint(int tile){
+        double stapGrootte = (double) 1600 /22;
+        double resultaat = stapGrootte*tile-stapGrootte/2;
+        return (int) resultaat;
+    }
+
+    public int calculateYpoint(int tile){
+        double stapGrootte = (double) 800 /15;
+        double resultaat = stapGrootte*tile-stapGrootte/2;
+        return (int) resultaat-2;
     }
 }
 
