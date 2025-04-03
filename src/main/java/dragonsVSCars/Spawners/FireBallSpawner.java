@@ -17,7 +17,6 @@ public class FireBallSpawner extends EntitySpawner {
     private int pierce;
     private int range;
     private ArrayList<Cars> cars;
-    private Double lastKnownAngle;
     private Double currentAngle;
 
     public FireBallSpawner(long intervalInMs, Coordinate2D location, int speed, int damage, int pierce, ArrayList<Cars> cars, int range) {
@@ -32,6 +31,7 @@ public class FireBallSpawner extends EntitySpawner {
 
     @Override
     protected void spawnEntities() {
+
         Cars closestCar = findClosestCar();
 
         if (closestCar == null) {

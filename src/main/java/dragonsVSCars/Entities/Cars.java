@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import static com.github.hanyaeger.api.entities.Direction.*;
 
-public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, TimerContainer {
+public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, TimerContainer, Collider {
     protected int marge;
     protected int health;
     protected int speed;
@@ -39,9 +39,7 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         };
     }
 
-    public void move() {
-        System.out.println(getAnchorLocation());
-        if (currentPathIndex < path.length) {
+    public void move() {        if (currentPathIndex < path.length) {
             moveToDestination(path[currentPathIndex]);  // Move towards the current waypoint
         }
     }

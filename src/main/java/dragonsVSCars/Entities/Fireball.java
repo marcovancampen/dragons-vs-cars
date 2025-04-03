@@ -20,7 +20,7 @@ public class Fireball extends DynamicSpriteEntity implements SceneBorderTouching
     public int pierce;
 
     public Fireball(Coordinate2D initialLocation, int speed, int damage, int pierce, double angle) {
-        super("Dragons/white_dragon_small.png",initialLocation);
+        super("Dragons/fireball.png",initialLocation);
         this.setMotion(speed, angle);
         this.position = initialLocation;
         this.speed = speed;
