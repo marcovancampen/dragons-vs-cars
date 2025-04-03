@@ -23,7 +23,6 @@ public class CarSpawner extends EntitySpawner{
 
     @Override
     protected void spawnEntities() {
-        System.out.println("Spawning entities");
         if (totalCarsSpawned<20) {
             spawner(3,1, 20);
             playerStats.setRound(1);
