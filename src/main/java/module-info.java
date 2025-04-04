@@ -9,7 +9,4 @@ module dragons.Cars {
     opens LevelImages;
     opens Dragons;
     opens carSprites;
-    exports com.github.hanyaeger.tutorial.entities;
-    exports com.github.hanyaeger.tutorial.scenes;
-    exports com.github.hanyaeger.tutorial.entities.buttons;
 }
