@@ -10,13 +10,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class MenuDragon extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
+public class DragonSpawnKnop extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
 
     private static String name;
     public static int cost;
     public boolean selected;
 
-    public MenuDragon(Coordinate2D initialLocation, int cost, String name, String label) {
+    public DragonSpawnKnop(Coordinate2D initialLocation, int cost, String name, String label) {
         super(initialLocation, label+ " \n" + cost);
         this.name = name;
         this.cost = cost;

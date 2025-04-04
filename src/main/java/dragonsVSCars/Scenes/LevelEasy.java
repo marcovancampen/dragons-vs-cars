@@ -42,7 +42,7 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
         spawnmenu.setMenu(getHeight());
         spawnmenu.setAnchorPoint(AnchorPoint.BOTTOM_RIGHT);
         addEntity(spawnmenu);
-        var MenuDragon = new MenuDragon(new Coordinate2D(1400, 0), 200, "green_dragon_small", "Green Dragon");
+        var MenuDragon = new DragonSpawnKnop(new Coordinate2D(1400, 0), 200, "green_dragon_small", "Green Dragon");
         addEntity(MenuDragon);
 
     }
@@ -56,7 +56,7 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
                 upgradeDragon(dragon);
             }
         }
-        if (!checkDragons(coordinate2D) && playerStats.getCash() >= MenuDragon.cost) {
+        if (!checkDragons(coordinate2D) && playerStats.getCash() >= DragonSpawnKnop.cost) {
 
             placeDragon(coordinate2D);
         }
@@ -114,8 +114,8 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
         FireBallSpawners.add(upgradedFireball);
     }
     public void placeDragon(Coordinate2D coordinate2D){
-        playerStats.decreaseCash(MenuDragon.cost);
-        String name =  MenuDragon.getName();
+        playerStats.decreaseCash(DragonSpawnKnop.cost);
+        String name =  DragonSpawnKnop.getName();
         var Dragon = new Dragons(coordinate2D, name , 10, 300, 10, 10 , 10);
         Dragon.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         dragons.add(Dragon);
