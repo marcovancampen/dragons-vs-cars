@@ -17,7 +17,7 @@ public class CarSpawner extends EntitySpawner{
     public int totalCarsSpawned;
     private final DragonsVSCars dragonsVSCars;
 
-    public CarSpawner(double sceneWidth, double sceneHeight, PlayerStats playerStats, DragonsVSCars dragonsVSCars) {
+    public CarSpawner(PlayerStats playerStats, DragonsVSCars dragonsVSCars) {
         super(1000);
         this.playerStats = playerStats;
         this.totalCarsSpawned = 0;

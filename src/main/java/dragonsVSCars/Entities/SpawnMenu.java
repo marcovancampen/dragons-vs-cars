@@ -6,8 +6,6 @@ import javafx.scene.paint.Color;
 
 public class    SpawnMenu extends RectangleEntity {
 
-    private String[] dragons;
-
     public SpawnMenu(Coordinate2D initialLocation) {
         super(initialLocation);
 

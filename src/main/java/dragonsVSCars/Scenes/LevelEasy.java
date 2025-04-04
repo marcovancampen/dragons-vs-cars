@@ -116,7 +116,7 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
     public void placeDragon(Coordinate2D coordinate2D){
         playerStats.decreaseCash(DragonSpawnKnop.cost);
         String name =  DragonSpawnKnop.getName();
-        var Dragon = new Dragons(coordinate2D, name , 10, 300, 10, 10 , 10);
+        var Dragon = new Dragons(coordinate2D, name , 10, 300, 400, 10 , 10);
         Dragon.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         dragons.add(Dragon);
         addEntity(Dragon);
@@ -127,8 +127,7 @@ public class LevelEasy extends DynamicScene implements EntitySpawnerContainer, M
 
     @Override
     public void setupEntitySpawners() {
-        System.out.println("doin this");
-        var carSpawner = new CarSpawner(getWidth(), getHeight(), playerStats, dragonsVSCars);
+        var carSpawner = new CarSpawner(playerStats, dragonsVSCars);
         addEntitySpawner(carSpawner);
         Cars = carSpawner.getCarList();
     }
