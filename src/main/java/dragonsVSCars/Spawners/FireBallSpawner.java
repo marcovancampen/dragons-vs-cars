@@ -39,7 +39,6 @@ public class FireBallSpawner extends EntitySpawner {
         }
 
         double distanceToCar = location.distance(closestCar.getAnchorLocation());
-        System.out.println("Closest car distance: " + distanceToCar + " | Attack Range: " + range);
 
         if (distanceToCar > range) {
             return;

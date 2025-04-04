@@ -30,7 +30,6 @@ public class Fireball extends Tower implements SceneBorderTouchingWatcher, Colli
        var tempPierce = pierce;
         decreasePierce(cars.getHealth());
         cars.deductHealth(tempPierce);
-        System.out.println(cars.getHealth());
         if(pierce <= 0){
             remove();
         }
