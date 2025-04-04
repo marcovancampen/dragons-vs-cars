@@ -25,11 +25,6 @@ public class Dragons extends Tower implements SceneBorderTouchingWatcher , Colli
         this.upgradeCost = upgradeCost;
     }
 
-    public void upgradeDragon() {
-
-
-    }
-
     @Override
     public void notifyBoundaryTouching(SceneBorder border) {
 
