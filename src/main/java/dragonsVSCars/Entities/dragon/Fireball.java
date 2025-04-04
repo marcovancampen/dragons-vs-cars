@@ -34,8 +34,6 @@ public class Fireball extends Tower implements SceneBorderTouchingWatcher, Colli
         if(pierce <= 0){
             remove();
         }
-
-
     }
 
     @Override

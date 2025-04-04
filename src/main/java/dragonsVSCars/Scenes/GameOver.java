@@ -38,8 +38,6 @@ public class GameOver extends StaticScene {
 
     }
 
-
-
     @Override
     public void setupEntities() {
         double buttonY = getHeight() / 2 + 100;

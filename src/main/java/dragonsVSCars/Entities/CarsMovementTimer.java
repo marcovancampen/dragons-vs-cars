@@ -4,7 +4,7 @@ import com.github.hanyaeger.api.Timer;
 
 public class CarsMovementTimer extends Timer {
 
-    private Cars car;
+    private final Cars car;
 
     public CarsMovementTimer(Cars car) {
         super(10);

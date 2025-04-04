@@ -23,15 +23,6 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         this.playerStats = playerStats;
         this.currentPathIndex = 0;
         this.carList = carList;
-//        this.path = new Coordinate2D[]{
-//                new Coordinate2D(180, 615),
-//                new Coordinate2D(1415, 615),
-//                new Coordinate2D(1415, 400),
-//                new Coordinate2D(255, 400),
-//                new Coordinate2D(255, 185),
-//                new Coordinate2D(1415, 185),
-//                new Coordinate2D(1415, -50)
-//        };
         this.path = new Coordinate2D[]{
                 new Coordinate2D(calculateXpoint(3), calculateYpoint(12)),
                 new Coordinate2D(calculateXpoint(20), calculateYpoint(12)),
@@ -75,13 +66,13 @@ public class Cars extends DynamicSpriteEntity implements SceneBorderTouchingWatc
         if (health <= 0){
             this.playerStats.increaseCash(20);
             deSpawnCar();
-            carList.remove(this); //mischien naar deSpawnCar?
         }
 
     }
 
     public void deSpawnCar(){
         remove();
+        carList.remove(this);
     }
 
     @Override
